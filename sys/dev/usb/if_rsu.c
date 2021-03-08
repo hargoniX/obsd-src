@@ -1718,7 +1718,7 @@ rsu_ioctl(struct ifnet *ifp, u_long cmd, caddr_t data)
 	case SIOCSIFFLAGS:
 		if (ifp->if_flags & IFF_UP) {
 			if (!(ifp->if_flags & IFF_RUNNING))
-				rsu_init(ifp);
+				error = rsu_init(ifp);
 		} else {
 			if (ifp->if_flags & IFF_RUNNING)
 				rsu_stop(ifp);
